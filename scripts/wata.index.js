@@ -177,6 +177,9 @@ $(document).ready(function() {
         $('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
         $('.team .col:in-viewport(' + tolerance + ')').addClass('animate');
         $('.masonry .card:in-viewport(' + tolerance + ')').addClass('animate');
+        if (window.scrollY > 1400 && window.scrollY < 1450) {
+            $('div#shuffle-grid').shuffle();
+        }
     });
 });
 
