@@ -171,10 +171,10 @@ $(document).ready(function() {
         $(this).parents('.card').toggleClass('active');
     });
 
-    var tolerance = window.innerHeight * .35;
+    var tolerance = window.innerHeight * .85;
 
     $(window).scroll(function() {
-        $('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
+        //$('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
         $('.team .col:in-viewport(' + tolerance + ')').addClass('animate');
         $('.masonry .card:in-viewport(' + tolerance + ')').addClass('animate');
     });
