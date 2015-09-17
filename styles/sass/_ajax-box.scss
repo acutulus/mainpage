@@ -14,31 +14,31 @@
         @include transform(translate3d(0, 50%, 0));
         opacity: 0;
     }
-}
 
-.ajax-content {
-    .parallax img {
-        @include transform(translateX(-50%));
-    }
+    .ajax-content {
+        .parallax img {
+            @include transform(translateX(-50%));
+        }
 
-    #close-ajax {
-        position: absolute;
-        z-index: 8888;
-        top: .75rem;
-        left: .75rem;
-    }
+        #close-ajax {
+            position: absolute;
+            z-index: 8888;
+            top: .75rem;
+            left: .75rem;
+        }
 
-    .padding-text {
-        padding: 1rem;
-    }
+        .padding-text {
+            padding: 1rem;
+        }
 
-    h1 {
-        text-transform: uppercase;
-        letter-spacing: 5px;
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 5px;
 
-        @media #{$small-and-down} {
-            font-size: 36px;
-            letter-spacing: 3px;
+            @media #{$small-and-down} {
+                font-size: 36px;
+                letter-spacing: 3px;
+            }
         }
     }
 }

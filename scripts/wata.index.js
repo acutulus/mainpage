@@ -171,7 +171,7 @@ $(document).ready(function() {
         $(this).parents('.card').toggleClass('active');
     });
 
-    var tolerance = window.innerHeight * .65;
+    var tolerance = window.innerHeight * .35;
 
     $(window).scroll(function() {
         $('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');

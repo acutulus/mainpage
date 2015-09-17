@@ -9,22 +9,34 @@
 
 'use strict';
 
-$(document).ready(function() {
+var startPage = function() {
     var isMobile = window.matchMedia("only screen and (max-width: 600px)"),
         isParallax = $('.parallax').length;
+
+    isParallax = $('.parallax').length;
 
     if (isParallax && ! isMobile.matches) {
         $('.parallax').parallax();
     } else if (isParallax && isMobile) {
         $('.parallax img').css({
             display: 'block',
-            height: '500'
+            height: 500
         })
     }
 
+    $('.materialboxed').length && $('.materialboxed').materialbox();
+    $('ul.tabs').length && $('ul.tabs').tabs();
+    setTimeout(function() {
+        $('div#shuffle-grid').shuffle('update');
+        $('.masonry').masonry();        
+    }, 500);
+};
+
+$(document).ready(function() {
+    startPage();
+
     (function() {
-        var scrollPosition,
-            wrapper = $('#wrapper'),
+        var wrapper = $('#wrapper'),
             ajaxBox = $('#ajax-box'),
             isMobile = window.matchMedia("only screen and (max-width: 600px)"),
             isParallax;
@@ -32,58 +44,48 @@ $(document).ready(function() {
         $('a.ajax-link').on('click', function(e) {
             e.preventDefault();
 
-            scrollPosition = $(document).scrollTop();
+            var scrollX = $(document).scrollTop();
+            var scrollY = $(document).scrollLeft();
+            var link = $(this).attr('href');
+            var animation = $(this).attr('ajax-animation');
+            if (!animation) {
+                animation = 'enter';
+            }
 
-            ajaxBox.load($(this).attr('href') + ' .ajax-content', function(resp, status, xhr) {
+            ajaxBox.load(link + ' .ajax-content', function(resp, status, xhr) {
                 if (status === 'error') {
                     unLoadAjax();
                     Materialize.toast(Wata.toastMessages.somethingWrong + xhr.status + ' ' + xhr.statusText, 5000, 'error');
                     return false;
                 }
 
+                if (history.pushState) {
+                    history.pushState({scrollX:scrollX, scrollY:scrollY}, null, link.href);
+                }
+
                 wrapper.fadeOut('fast', function() {
                     window.scrollTo(0, 0);
                 });
 
-                $('.materialboxed').length && $('.materialboxed').materialbox();
-                $('ul.tabs').length && $('ul.tabs').tabs();
-
-                ajaxBox.addClass('enter');
+                ajaxBox.addClass(animation);
 
                 setTimeout(function() {
-                    ajaxBox.removeClass('translate enter');
-                    $('#ajax-status').hide();
-
-                    isParallax = $('.parallax').length;
-
-                    if (isParallax && ! isMobile.matches) {
-                        $('.parallax').parallax();
-                    } else if (isParallax && isMobile) {
-                        $('.parallax img').css({
-                            display: 'block',
-                            height: 500
-                        })
-                    }
+                    ajaxBox.removeClass(animation);
+                    wrapper.remove();
+                    ajaxBox.attr("id","wrapper");
+                    $(document.body).appendChild('<div id="ajaxBox"></div>');
+                    if (startPage) {
+                        startPage();
+                    } 
                 }, 750);
             });
         });
 
-        $(document).on('click', '#close-ajax', function(e) {
-            e.preventDefault();
-            unLoadAjax();
-        });
+        if (history.pushState) {
+            window.addEventListener("popstate", function(e) {
+                console.log(e);
+            });
 
-        function unLoadAjax() {
-            ajaxBox.removeClass('enter').addClass('translate');
-            setTimeout(function() {
-                ajaxBox.html('');
-            }, 750);
-            wrapper.show().css('visibility', 'hidden');
-            $(document).scrollTop(scrollPosition);
-            wrapper.hide().css('visibility', 'visible').fadeIn();
-
-            $('div#shuffle-grid').shuffle('update');
-            $('.masonry').masonry();
         }
     })();
 
