@@ -174,7 +174,7 @@ $(document).ready(function() {
     var tolerance = window.innerHeight * .95;
 
     $(window).scroll(function() {
-        //$('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
+        $('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
         $('.team .col:in-viewport(' + tolerance + ')').addClass('animate');
         $('.masonry .card:in-viewport(' + tolerance + ')').addClass('animate');
     });
@@ -266,7 +266,7 @@ var Shuffle = (function($, imagesLoaded) {
             $grid.shuffle({
                 itemSelector: '.picture-item'
             });            
-        }, 500);
+        }, 1000);
     };
 
     $btns.on('click', function() {
