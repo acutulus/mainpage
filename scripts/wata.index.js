@@ -177,9 +177,6 @@ $(document).ready(function() {
         $('.picture-item:in-viewport(' + tolerance + ')').addClass('animate');
         $('.team .col:in-viewport(' + tolerance + ')').addClass('animate');
         $('.masonry .card:in-viewport(' + tolerance + ')').addClass('animate');
-        if (window.scrollY > 1400 && window.scrollY < 1450) {
-            $('div#shuffle-grid').shuffle();
-        }
     });
 });
 
@@ -265,10 +262,14 @@ var Shuffle = (function($, imagesLoaded) {
     };
 
     onAllImagesFinished = function(instance) {
+        $grid.shuffle({
+            itemSelector: '.picture-item'
+        }); 
         setTimeout(function() {
-            $grid.shuffle({
-                itemSelector: '.picture-item'
-            });            
+            $grid.shuffle('shuffle', 'testing');
+        }, 500);
+        setTimeout(function() {
+            $grid.shuffle('shuffle', 'all');
         }, 1000);
     };
 
