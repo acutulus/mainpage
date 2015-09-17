@@ -262,9 +262,11 @@ var Shuffle = (function($, imagesLoaded) {
     };
 
     onAllImagesFinished = function(instance) {
-        $grid.shuffle({
-            itemSelector: '.picture-item'
-        });
+        setTimeout(function() {
+            $grid.shuffle({
+                itemSelector: '.picture-item'
+            });            
+        }, 500);
     };
 
     $btns.on('click', function() {
