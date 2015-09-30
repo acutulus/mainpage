@@ -120,50 +120,22 @@ nav {
 /* 3. Ajax-box / #ajax-box
 /*
 /**********************************************************************************************************************/
-#ajax-box {
-  -webkit-transition-property: -webkit-transform, opacity;
-  -moz-transition-property: -moz-transform, opacity;
-  transition-property: transform, opacity;
-  -webkit-transition-duration: 0.6s, 0.6s;
-  -moz-transition-duration: 0.6s, 0.6s;
-  transition-duration: 0.6s, 0.6s;
-  -webkit-transition-timing-function: ease-out, ease;
-  -moz-transition-timing-function: ease-out, ease;
-  transition-timing-function: ease-out, ease; }
-  #ajax-box.translate.enter {
-    will-change: transform, opacity;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 1; }
-  #ajax-box.translate {
-    will-change: transform, opacity;
-    -webkit-transform: translate3d(0, 50%, 0);
-    -moz-transform: translate3d(0, 50%, 0);
-    -ms-transform: translate3d(0, 50%, 0);
-    -o-transform: translate3d(0, 50%, 0);
-    transform: translate3d(0, 50%, 0);
-    opacity: 0; }
-  #ajax-box .ajax-content .parallax img {
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%); }
-  #ajax-box .ajax-content #close-ajax {
+.sub-page {
+  background-color: white; }
+  .sub-page .parallax {
+    z-index: 0; }
+  .sub-page #close-ajax {
     position: absolute;
     z-index: 8888;
     top: .75rem;
     left: .75rem; }
-  #ajax-box .ajax-content .padding-text {
+  .sub-page .padding-text {
     padding: 1rem; }
-  #ajax-box .ajax-content h1 {
+  .sub-page h1 {
     text-transform: uppercase;
     letter-spacing: 5px; }
     @media only screen and (max-width: 600px) {
-      #ajax-box .ajax-content h1 {
+      .sub-page h1 {
         font-size: 36px;
         letter-spacing: 3px; } }
 
@@ -369,7 +341,7 @@ h2 {
     width: 100px;
     height: 5px;
     margin-left: -50px;
-    margin-top: 35px;
+    margin-top: 22px;
     background-color: #4de6ff; }
 
 @media only screen and (min-width: 601px) {
@@ -391,7 +363,12 @@ blockquote {
 /*
 /**********************************************************************************************************************/
 #triangles {
-  height: 600px; }
+  height: 600px;
+  position: relative; }
+  #triangles #output {
+    position: absolute;
+    height: 100%;
+    width: 100%; }
   #triangles .h1-wrapper {
     position: absolute;
     top: 0;
@@ -502,6 +479,8 @@ blockquote {
     text-transform: uppercase;
     font-size: 18px;
     letter-spacing: 3px; }
+  .picture-item img {
+    border: 1px solid #4de6ff; }
 
 /***********************************************************************************************************************
 /*
@@ -838,3 +817,179 @@ button.lines-button {
   .lines-button.x2.close .lines:after {
     -webkit-transform: rotate3d(0, 0, 1, -45deg);
     transform: rotate3d(0, 0, 1, -45deg); }
+
+/***********************************************************************************************************************
+/*
+/* 17. Text
+/*
+/**********************************************************************************************************************/
+p:not(.non-flow) {
+  font-weight: 300; }
+
+@media only screen and (min-width: 360px) {
+  p:not(.non-flow) {
+    font-size: 1.2rem; } }
+
+@media only screen and (min-width: 0px) {
+  p:not(.non-flow) {
+    line-height: .8rem; } }
+
+@media only screen and (min-width: 390px) {
+  p:not(.non-flow) {
+    font-size: 1.224rem; } }
+
+@media only screen and (min-width: 30px) {
+  p:not(.non-flow) {
+    line-height: .904rem; } }
+
+@media only screen and (min-width: 420px) {
+  p:not(.non-flow) {
+    font-size: 1.248rem; } }
+
+@media only screen and (min-width: 60px) {
+  p:not(.non-flow) {
+    line-height: 1.008rem; } }
+
+@media only screen and (min-width: 450px) {
+  p:not(.non-flow) {
+    font-size: 1.272rem; } }
+
+@media only screen and (min-width: 90px) {
+  p:not(.non-flow) {
+    line-height: 1.112rem; } }
+
+@media only screen and (min-width: 480px) {
+  p:not(.non-flow) {
+    font-size: 1.296rem; } }
+
+@media only screen and (min-width: 120px) {
+  p:not(.non-flow) {
+    line-height: 1.216rem; } }
+
+@media only screen and (min-width: 510px) {
+  p:not(.non-flow) {
+    font-size: 1.32rem; } }
+
+@media only screen and (min-width: 150px) {
+  p:not(.non-flow) {
+    line-height: 1.32rem; } }
+
+@media only screen and (min-width: 540px) {
+  p:not(.non-flow) {
+    font-size: 1.344rem; } }
+
+@media only screen and (min-width: 180px) {
+  p:not(.non-flow) {
+    line-height: 1.424rem; } }
+
+@media only screen and (min-width: 570px) {
+  p:not(.non-flow) {
+    font-size: 1.368rem; } }
+
+@media only screen and (min-width: 210px) {
+  p:not(.non-flow) {
+    line-height: 1.528rem; } }
+
+@media only screen and (min-width: 600px) {
+  p:not(.non-flow) {
+    font-size: 1.392rem; } }
+
+@media only screen and (min-width: 240px) {
+  p:not(.non-flow) {
+    line-height: 1.632rem; } }
+
+@media only screen and (min-width: 630px) {
+  p:not(.non-flow) {
+    font-size: 1.416rem; } }
+
+@media only screen and (min-width: 270px) {
+  p:not(.non-flow) {
+    line-height: 1.736rem; } }
+
+@media only screen and (min-width: 660px) {
+  p:not(.non-flow) {
+    font-size: 1.44rem; } }
+
+@media only screen and (min-width: 300px) {
+  p:not(.non-flow) {
+    line-height: 1.84rem; } }
+
+@media only screen and (min-width: 690px) {
+  p:not(.non-flow) {
+    font-size: 1.464rem; } }
+
+@media only screen and (min-width: 330px) {
+  p:not(.non-flow) {
+    line-height: 1.944rem; } }
+
+@media only screen and (min-width: 720px) {
+  p:not(.non-flow) {
+    font-size: 1.488rem; } }
+
+@media only screen and (min-width: 360px) {
+  p:not(.non-flow) {
+    line-height: 2.048rem; } }
+
+@media only screen and (min-width: 750px) {
+  p:not(.non-flow) {
+    font-size: 1.512rem; } }
+
+@media only screen and (min-width: 390px) {
+  p:not(.non-flow) {
+    line-height: 2.152rem; } }
+
+@media only screen and (min-width: 780px) {
+  p:not(.non-flow) {
+    font-size: 1.536rem; } }
+
+@media only screen and (min-width: 420px) {
+  p:not(.non-flow) {
+    line-height: 2.256rem; } }
+
+@media only screen and (min-width: 810px) {
+  p:not(.non-flow) {
+    font-size: 1.56rem; } }
+
+@media only screen and (min-width: 450px) {
+  p:not(.non-flow) {
+    line-height: 2.36rem; } }
+
+@media only screen and (min-width: 840px) {
+  p:not(.non-flow) {
+    font-size: 1.584rem; } }
+
+@media only screen and (min-width: 480px) {
+  p:not(.non-flow) {
+    line-height: 2.464rem; } }
+
+@media only screen and (min-width: 870px) {
+  p:not(.non-flow) {
+    font-size: 1.608rem; } }
+
+@media only screen and (min-width: 510px) {
+  p:not(.non-flow) {
+    line-height: 2.568rem; } }
+
+@media only screen and (min-width: 900px) {
+  p:not(.non-flow) {
+    font-size: 1.632rem; } }
+
+@media only screen and (min-width: 540px) {
+  p:not(.non-flow) {
+    line-height: 2.672rem; } }
+
+@media only screen and (min-width: 930px) {
+  p:not(.non-flow) {
+    font-size: 1.656rem; } }
+
+@media only screen and (min-width: 570px) {
+  p:not(.non-flow) {
+    line-height: 2.776rem; } }
+
+@media only screen and (min-width: 960px) {
+  p:not(.non-flow) {
+    font-size: 1.68rem; } }
+
+@media only screen and (min-width: 600px) {
+  p:not(.non-flow) {
+    line-height: 2.88rem; } }

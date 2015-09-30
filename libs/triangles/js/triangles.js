@@ -1645,6 +1645,9 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   // Methods
   //------------------------------
   function initialise() {
+    container = document.getElementById('triangles');
+    controls = document.getElementById('controls');
+    output = document.getElementById('output');
     createRenderer();
     createScene();
     createMesh();
@@ -1666,7 +1669,9 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
 
   function setRenderer(index) {
     if (renderer) {
-      output.removeChild(renderer.element);
+      try {
+        output.removeChild(renderer.element);
+      } catch (e) {}
     }
     switch(index) {
       case WEBGL:
@@ -1958,6 +1963,10 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   //});
 
   // Let there be light!
-  initialise();
+  //initialise();
+
+  window.renderTriangles = animate;
+  window.initTriangles = initialise;
+  window.setRenderer = setRenderer;
 
 })();

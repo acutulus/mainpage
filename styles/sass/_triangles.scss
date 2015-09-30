@@ -1,5 +1,12 @@
 #triangles {
     height: 600px;
+    position:relative;
+
+    #output {
+     position: absolute;
+     height:100%;
+     width:100%;
+    }
 
     .h1-wrapper {
         position: absolute;
