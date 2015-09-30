@@ -1,0 +1,15 @@
+{
+  "name": "jquery.throttle",
+  "homepage": "https://github.com/wangshijun2010/jquery.throttle",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "b6f1922a636616eafdedbc3fa0d267e6b5804c4b"
+  },
+  "_source": "git://github.com/wangshijun2010/jquery.throttle.git",
+  "_target": "~1.0.0",
+  "_originalSource": "jquery.throttle",
+  "_direct": true
+}
