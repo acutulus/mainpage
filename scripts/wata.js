@@ -53,7 +53,7 @@ var ajaxStartPageCallback = function() {
 
     //ScrollAnimations();
 
-    Shuffle.init();
+    //Shuffle.init();
 
     if ($('form#contact-form').length) {
         (function() {
@@ -179,6 +179,11 @@ var ajaxStartPageCallback = function() {
         $(this).parents('.card').toggleClass('active');
     });
 
+    $('.started-btn').click(function() {
+        $(document.body).append('<script id="typef_orm" src="https://s3-eu-west-1.amazonaws.com/share.typeform.com/widget.js"></script>');
+        $('.typeform-container').css('height', 500);
+    });
+
     $('.materialboxed').length && $('.materialboxed').materialbox();
     
     $('ul.tabs').length && $('ul.tabs').tabs();
@@ -194,7 +199,7 @@ var ajaxStartPageCallback = function() {
     */
 
     setTimeout(function() {
-        $('div#shuffle-grid').shuffle('update');
+        //$('div#shuffle-grid').shuffle('update');
     }, 100);
 
     initTriangles();

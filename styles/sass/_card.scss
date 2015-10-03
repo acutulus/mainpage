@@ -12,7 +12,7 @@
         $shadow: 0 16px 28px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21);
         @include prefixer(box-shadow, $shadow, webkit moz spec);
 
-        a.btn-floating {
+        .btn-floating {
             @include transform(translate3d(0, 0, 0));
         }
     }
@@ -23,7 +23,7 @@
         }
     }
 
-    a, i {
+    a, i, .btn-floating {
         color: $primary-color;
         text-transform: none;
 
@@ -32,7 +32,7 @@
         }
     }
 
-    a.btn-floating {
+    .btn-floating {
         position: absolute;
         bottom: 10px;
         right: 10px;

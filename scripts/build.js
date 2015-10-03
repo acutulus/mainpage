@@ -103,7 +103,7 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
             animation = animation.replace('slideRight', 'slideLeft');
         }
         return animation;
-    }
+    };
 
     var loadAjax = function(link, animation, scroll, back) {
         if (link) {
@@ -115,18 +115,19 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
             if (!animation) {
                 animation = 'fade';
             }
-            ajaxBox.addClass('active').addClass(animation);
             if (!scroll) {
                 scroll = {x:0,y:0};                
             }
 
             var finishPage = function() {
-                //wrapper.attr('id', 'ajax-cache'+currentLocation.replace(/\//g, '-'));
-                //wrapper.addClass('ajax-cache');
-                wrapper.remove();
-                $('#ajax-content').unwrap();
-                $(document.body).append('<div id="ajax-box"></div>');
-                console.log($('script[ajax-replay]'));
+                wrapper.attr('id', 'ajax-cache'+currentLocation.replace(/\//g, '-'));
+                wrapper.addClass('ajax-cache');
+                if (ajaxBox.hasClass('ajax-cache')) {
+
+                } else {
+                    $('#ajax-content').unwrap();
+                    $(document.body).append('<div id="ajax-box"></div>');
+                }
             };
 
             var animatePage = function() {
@@ -135,12 +136,11 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
                     history.pushState({}, null, link);
                 }
 
-                wrapper.fadeOut('fast', function() {
-                    window.scrollTo(scroll.x, scroll.y);
-                    if (ajaxStartPageCallback) {
-                        ajaxStartPageCallback();
-                    }
-                });
+                wrapper.addClass('ajax-cache');
+                window.scrollTo(scroll.x, scroll.y);
+                if (ajaxStartPageCallback) {
+                    ajaxStartPageCallback();
+                }
 
                 ajaxBox.one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
                     finishPage();
@@ -148,12 +148,15 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
                 setTimeout(function() {
                     ajaxBox.addClass('enter');                    
                 }, 0);
-            }
+            };
 
-            //if ($('#ajax-cache'+link.replace(/\//g,'-')).length) {
-            //    ajaxBox = $('#ajax-cache'+link.replace(/\//g,'-'));
-            //    animatePage();
-            //} else {
+            if ($('#ajax-cache'+link.replace(/\//g,'-')).length) {
+                ajaxBox = $('#ajax-cache'+link.replace(/\//g,'-'));
+                ajaxBox.removeClass('ajax-cache');
+                ajaxBox.addClass('active').addClass(animation);
+                animatePage();
+            } else {
+                ajaxBox.addClass('active').addClass(animation);
                 ajaxBox.load(link + ' #ajax-content', function(resp, status, xhr) {
                     if (status === 'error') {
                         if (ajaxErrorCallback) {
@@ -164,7 +167,7 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
 
                     animatePage();
                 });
-            //}
+            }
         }
     };
 
@@ -235,7 +238,7 @@ var ajaxStartPageCallback = function() {
 
     //ScrollAnimations();
 
-    Shuffle.init();
+    //Shuffle.init();
 
     if ($('form#contact-form').length) {
         (function() {
@@ -361,6 +364,11 @@ var ajaxStartPageCallback = function() {
         $(this).parents('.card').toggleClass('active');
     });
 
+    $('.started-btn').click(function() {
+        $(document.body).append('<script id="typef_orm" data-src="https://s3-eu-west-1.amazonaws.com/share.typeform.com/widget.js"></script>');
+        $('.typeform-container').css('height', 500);
+    });
+
     $('.materialboxed').length && $('.materialboxed').materialbox();
     
     $('ul.tabs').length && $('ul.tabs').tabs();
@@ -376,8 +384,8 @@ var ajaxStartPageCallback = function() {
     */
 
     setTimeout(function() {
-        $('div#shuffle-grid').shuffle('update');
-    }, 500);
+        //$('div#shuffle-grid').shuffle('update');
+    }, 100);
 
     initTriangles();
 

@@ -30,7 +30,6 @@ $(document).ready(function() {
             if (!animation) {
                 animation = 'fade';
             }
-            ajaxBox.addClass('active').addClass(animation);
             if (!scroll) {
                 scroll = {x:0,y:0};                
             }
@@ -38,10 +37,12 @@ $(document).ready(function() {
             var finishPage = function() {
                 wrapper.attr('id', 'ajax-cache'+currentLocation.replace(/\//g, '-'));
                 wrapper.addClass('ajax-cache');
-                //wrapper.remove();
-                $('#ajax-content').unwrap();
-                $(document.body).append('<div id="ajax-box"></div>');
-                console.log($('script[ajax-replay]'));
+                if (ajaxBox.hasClass('ajax-cache')) {
+
+                } else {
+                    $('#ajax-content').unwrap();
+                    $(document.body).append('<div id="ajax-box"></div>');
+                }
             };
 
             var animatePage = function() {
@@ -50,12 +51,11 @@ $(document).ready(function() {
                     history.pushState({}, null, link);
                 }
 
-                wrapper.fadeOut('fast', function() {
-                    window.scrollTo(scroll.x, scroll.y);
-                    if (ajaxStartPageCallback) {
-                        ajaxStartPageCallback();
-                    }
-                });
+                wrapper.addClass('ajax-cache');
+                window.scrollTo(scroll.x, scroll.y);
+                if (ajaxStartPageCallback) {
+                    ajaxStartPageCallback();
+                }
 
                 ajaxBox.one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
                     finishPage();
@@ -67,8 +67,11 @@ $(document).ready(function() {
 
             if ($('#ajax-cache'+link.replace(/\//g,'-')).length) {
                 ajaxBox = $('#ajax-cache'+link.replace(/\//g,'-'));
+                ajaxBox.removeClass('ajax-cache');
+                ajaxBox.addClass('active').addClass(animation);
                 animatePage();
             } else {
+                ajaxBox.addClass('active').addClass(animation);
                 ajaxBox.load(link + ' #ajax-content', function(resp, status, xhr) {
                     if (status === 'error') {
                         if (ajaxErrorCallback) {

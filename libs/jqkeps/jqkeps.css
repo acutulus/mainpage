@@ -12,10 +12,10 @@
 }
 
 .ajax-cache {
-  display: none;
+  opacity: 0;
 }
 
-#ajax-box {
+#ajax-box, .ajax-cache {
   -webkit-transition-property: -webkit-transform, opacity;
   -moz-transition-property: -moz-transform, opacity;
   transition-property: transform, opacity;
@@ -26,6 +26,8 @@
   -moz-transition-timing-function: ease-out, ease;
   transition-timing-function: ease-out, ease;
   will-change: transform, opacity;
+}
+#ajax-box {
   z-index: 1000;
   display: none;
 }
