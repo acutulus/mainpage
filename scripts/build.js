@@ -83,107 +83,7 @@ window.Modernizr=function(a,b,c){function d(a){s.cssText=a}function e(a,b){retur
  * @author  Mudit Ameta
  * @license https://github.com/zeusdeux/isInViewport/blob/master/license.md MIT
  */
-!function(a,b){function c(b){var c,d=a("<div></div>").css({width:"100%"});return b.append(d),c=b.width()-d.width(),d.remove(),c}function d(e,f){var g=e.getBoundingClientRect(),h=g.top,i=g.bottom,j=g.left,k=g.right,l=a.extend({tolerance:0,viewport:b},f),m=!1,n=l.viewport.jquery?l.viewport:a(l.viewport);n.length||(console.warn("isInViewport: The viewport selector you have provided matches no element on page."),console.warn("isInViewport: Defaulting to viewport as window"),n=a(b));var o=n.height(),p=n.width(),q=n.get(0).toString();if(n[0]!==b&&"[object Window]"!==q&&"[object DOMWindow]"!==q){var r=n.get(0).getBoundingClientRect();h-=r.top,i-=r.top,j-=r.left,k-=r.left,d.scrollBarWidth=d.scrollBarWidth||c(n),p-=d.scrollBarWidth}return l.tolerance=~~Math.round(parseFloat(l.tolerance)),l.tolerance<0&&(l.tolerance=o+l.tolerance),0>=k||j>=p?m:m=l.tolerance?!!(h<=l.tolerance&&i>=l.tolerance):!!(i>0&&o>=h)}String.prototype.hasOwnProperty("trim")||(String.prototype.trim=function(){return this.replace(/^\s*(.*?)\s*$/,"$1")});var e=function(b){if(1===arguments.length&&"function"==typeof b&&(b=[b]),!(b instanceof Array))throw new SyntaxError("isInViewport: Argument(s) passed to .do/.run should be a function or an array of functions");for(var c=0;c<b.length;c++)if("function"==typeof b[c])for(var d=0;d<this.length;d++)b[c].call(a(this[d]));else console.warn("isInViewport: Argument(s) passed to .do/.run should be a function or an array of functions"),console.warn("isInViewport: Ignoring non-function values in array and moving on");return this};a.fn["do"]=function(a){return console.warn("isInViewport: .do causes issues in IE and some browsers since its a reserved. Use $.fn.run instead i.e., $(el).run(fn)."),e(a)},a.fn.run=e,a.extend(a.expr[":"],{"in-viewport":function(a,b,c){if(c[3]){var e=c[3].split(",");return 1===e.length&&isNaN(e[0])&&(e[1]=e[0],e[0]=void 0),d(a,{tolerance:e[0]?e[0].trim():void 0,viewport:e[1]?e[1].trim():void 0})}return d(a)}})}(jQuery,window);;$(document).ready(function() {
-    if (history.pushState) {
-        window.addEventListener("popstate", function(e) {
-            console.log('popstate', e);
-            loadAjax(location.pathname, e.state.animation, e.state.scroll, true);
-        });
-    }
-
-    var switchAnimation = function(animation) {
-        if (animation.indexOf('slideUp') > -1) {
-            animation = animation.replace('slideUp', 'slideDown');            
-        } else {
-            animation = animation.replace('slideDown', 'slideUp');            
-        }
-        if (animation.indexOf('slideLeft') > -1) {
-            animation = animation.replace('slideLeft', 'slideRight');
-        } else {
-            animation = animation.replace('slideRight', 'slideLeft');
-        }
-        return animation;
-    };
-
-    var loadAjax = function(link, animation, scroll, back) {
-        if (link) {
-            var wrapper = $('#ajax-content');
-            var ajaxBox = $('#ajax-box');
-            var scrollY = $(document).scrollTop();
-            var scrollX = $(document).scrollLeft();
-            var currentLocation = location.pathname;
-            if (!animation) {
-                animation = 'fade';
-            }
-            if (!scroll) {
-                scroll = {x:0,y:0};                
-            }
-
-            var finishPage = function() {
-                wrapper.attr('id', 'ajax-cache'+currentLocation.replace(/\//g, '-'));
-                wrapper.addClass('ajax-cache');
-                if (ajaxBox.hasClass('ajax-cache')) {
-
-                } else {
-                    $('#ajax-content').unwrap();
-                    $(document.body).append('<div id="ajax-box"></div>');
-                }
-            };
-
-            var animatePage = function() {
-                if (history.pushState && !back) {
-                    history.replaceState({scrollX:scrollX, scrollY:scrollY, animation:switchAnimation(animation)}, null);
-                    history.pushState({}, null, link);
-                }
-
-                wrapper.addClass('ajax-cache');
-                window.scrollTo(scroll.x, scroll.y);
-                if (ajaxStartPageCallback) {
-                    ajaxStartPageCallback();
-                }
-
-                ajaxBox.one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
-                    finishPage();
-                });
-                setTimeout(function() {
-                    ajaxBox.addClass('enter');                    
-                }, 0);
-            };
-
-            if ($('#ajax-cache'+link.replace(/\//g,'-')).length) {
-                ajaxBox = $('#ajax-cache'+link.replace(/\//g,'-'));
-                ajaxBox.removeClass('ajax-cache');
-                ajaxBox.addClass('active').addClass(animation);
-                animatePage();
-            } else {
-                ajaxBox.addClass('active').addClass(animation);
-                ajaxBox.load(link + ' #ajax-content', function(resp, status, xhr) {
-                    if (status === 'error') {
-                        if (ajaxErrorCallback) {
-                            ajaxErrorCallback();
-                        }
-                        return false;
-                    }
-
-                    animatePage();
-                });
-            }
-        }
-    };
-
-    $('body').on('click', 'a.ajax-link', function(e) {
-        e.preventDefault();
-        var back = $(this).attr('ajax-back');
-        if (typeof back !== typeof undefined && back !== false && history.pushState && history.state) {
-            history.back();
-            return;
-        } else {
-            var link = $(this).attr('href');
-            var animation = $(this).attr('ajax-animation');
-            loadAjax(link, animation, {x:0,y:0}, false);
-        }
-    });
-});;/*!
+!function(a,b){function c(b){var c,d=a("<div></div>").css({width:"100%"});return b.append(d),c=b.width()-d.width(),d.remove(),c}function d(e,f){var g=e.getBoundingClientRect(),h=g.top,i=g.bottom,j=g.left,k=g.right,l=a.extend({tolerance:0,viewport:b},f),m=!1,n=l.viewport.jquery?l.viewport:a(l.viewport);n.length||(console.warn("isInViewport: The viewport selector you have provided matches no element on page."),console.warn("isInViewport: Defaulting to viewport as window"),n=a(b));var o=n.height(),p=n.width(),q=n.get(0).toString();if(n[0]!==b&&"[object Window]"!==q&&"[object DOMWindow]"!==q){var r=n.get(0).getBoundingClientRect();h-=r.top,i-=r.top,j-=r.left,k-=r.left,d.scrollBarWidth=d.scrollBarWidth||c(n),p-=d.scrollBarWidth}return l.tolerance=~~Math.round(parseFloat(l.tolerance)),l.tolerance<0&&(l.tolerance=o+l.tolerance),0>=k||j>=p?m:m=l.tolerance?!!(h<=l.tolerance&&i>=l.tolerance):!!(i>0&&o>=h)}String.prototype.hasOwnProperty("trim")||(String.prototype.trim=function(){return this.replace(/^\s*(.*?)\s*$/,"$1")});var e=function(b){if(1===arguments.length&&"function"==typeof b&&(b=[b]),!(b instanceof Array))throw new SyntaxError("isInViewport: Argument(s) passed to .do/.run should be a function or an array of functions");for(var c=0;c<b.length;c++)if("function"==typeof b[c])for(var d=0;d<this.length;d++)b[c].call(a(this[d]));else console.warn("isInViewport: Argument(s) passed to .do/.run should be a function or an array of functions"),console.warn("isInViewport: Ignoring non-function values in array and moving on");return this};a.fn["do"]=function(a){return console.warn("isInViewport: .do causes issues in IE and some browsers since its a reserved. Use $.fn.run instead i.e., $(el).run(fn)."),e(a)},a.fn.run=e,a.extend(a.expr[":"],{"in-viewport":function(a,b,c){if(c[3]){var e=c[3].split(",");return 1===e.length&&isNaN(e[0])&&(e[1]=e[0],e[0]=void 0),d(a,{tolerance:e[0]?e[0].trim():void 0,viewport:e[1]?e[1].trim():void 0})}return d(a)}})}(jQuery,window);;/*!
  * Wata
  * Project Website: http://wata.pimmey.com
  *
@@ -365,7 +265,7 @@ var ajaxStartPageCallback = function() {
     });
 
     $('.started-btn').click(function() {
-        $(document.body).append('<script id="typef_orm" data-src="https://s3-eu-west-1.amazonaws.com/share.typeform.com/widget.js"></script>');
+        $(document.body).append('<script id="typef_orm" src="https://s3-eu-west-1.amazonaws.com/share.typeform.com/widget.js"></script>');
         $('.typeform-container').css('height', 500);
     });
 

@@ -1,3 +1,4 @@
+/* jslint browser:true */
 /*!
  * Wata
  * Project Website: http://wata.pimmey.com
@@ -28,7 +29,7 @@ function init() {
 
 var ajaxErrorCallback = function() {
     Materialize.toast("Error loading page");
-}
+};
 
 var ajaxStartPageCallback = function() {
     init();
@@ -202,7 +203,24 @@ var ajaxStartPageCallback = function() {
         //$('div#shuffle-grid').shuffle('update');
     }, 100);
 
-    initTriangles();
+    function resizeTriangles() {
+        var nav = document.getElementById('nav'),
+        windowHeight,
+        navHeight,
+        trianglesHeight;
+
+        windowHeight = window.innerHeight;
+        navHeight = nav.clientHeight;
+        trianglesHeight = windowHeight - navHeight;
+        triangles.style.height = trianglesHeight + 'px';
+    }
+
+    var triangles = document.getElementById('triangles');
+    if (triangles) {
+        resizeTriangles();
+        window.addEventListener('resize', resizeTriangles);
+        initTriangles();        
+    }
 
     var waiting = false;
     var tolerance = $( window ).height() * 0.7;

@@ -1,57 +1,55 @@
-#ajax-box, #ajax-content {
+.ajax-content {
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
   background-color: white;
-}
-
-#ajax-content {
   z-index: 1;
-}
-
-.ajax-cache {
-  opacity: 0;
-}
-
-#ajax-box, .ajax-cache {
   -webkit-transition-property: -webkit-transform, opacity;
   -moz-transition-property: -moz-transform, opacity;
   transition-property: transform, opacity;
-  -webkit-transition-duration: 0.6s, 0.6s;
-  -moz-transition-duration: 0.6s, 0.6s;
-  transition-duration: 0.6s, 0.6s;
+  -webkit-transition-duration: 4.6s, 4.6s;
+  -moz-transition-duration: 4.6s, 4.6s;
+  transition-duration: 4.6s, 4.6s;
   -webkit-transition-timing-function: ease-out, ease;
   -moz-transition-timing-function: ease-out, ease;
   transition-timing-function: ease-out, ease;
-  will-change: transform, opacity;
 }
-#ajax-box {
-  z-index: 1000;
+
+.ajax-cache {
   display: none;
 }
-#ajax-box.active {
+
+.ajax-content.leave {
+  -webkit-transition-duration: 3.25s, 3.25s;
+  -moz-transition-duration: 3.25s, 3.25s;
+  transition-duration: 3.25s, 3.25s;
+}
+.ajax-content.enter {
+  z-index: 1000;
+}
+.ajax-content.enter.active {
   display: block;
 }
-#ajax-box.fade {
+.ajax-content.fade {
   opacity: 0;
 }
-#ajax-box.slideUp {
+.ajax-content.slideUp {
   -webkit-transform: translate3d(0, 80%, 0);
   -moz-transform: translate3d(0, 80%, 0);
   -ms-transform: translate3d(0, 80%, 0);
   -o-transform: translate3d(0, 80%, 0);
   transform: translate3d(0, 80%, 0);
 }
-#ajax-box.slideDown {
+ .ajax-content.slideDown {
   -webkit-transform: translate3d(0, -80%, 0);
   -moz-transform: translate3d(0, -80%, 0);
   -ms-transform: translate3d(0, -80%, 0);
   -o-transform: translate3d(0, -80%, 0);
   transform: translate3d(0, -80%, 0);
 }
-#ajax-box.slideLeft {
+.ajax-content.slideLeft {
   will-change: transform, opacity;
   -webkit-transform: translate3d(80%, 0, 0);
   -moz-transform: translate3d(80%, 0, 0);
@@ -59,14 +57,14 @@
   -o-transform: translate3d(80%, 0, 0);
   transform: translate3d(80%, 0, 0);
 }
-#ajax-box.slideRight {
+.ajax-content.slideRight {
   -webkit-transform: translate3d(80%, 0, 0);
   -moz-transform: translate3d(80%, 0, 0);
   -ms-transform: translate3d(80%, 0, 0);
   -o-transform: translate3d(80%, 0, 0);
   transform: translate3d(80%, 0%, 0);
 }
-#ajax-box.enter {
+.ajax-content.enter {
   will-change: transform, opacity;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);

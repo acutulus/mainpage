@@ -9,24 +9,6 @@
 
 'use strict';
 
-(function() {
-    var triangles = document.getElementById('triangles'),
-        nav = document.getElementById('nav'),
-        windowHeight,
-        navHeight,
-        trianglesHeight;
-
-    function resizeTriangles() {
-        windowHeight = window.innerHeight;
-        navHeight = nav.clientHeight;
-        trianglesHeight = windowHeight - navHeight;
-        triangles.style.height = trianglesHeight + 'px';
-    }
-
-    resizeTriangles();
-    window.addEventListener('resize', resizeTriangles);
-})();
-
 function trianglesReady() {
 }
 
