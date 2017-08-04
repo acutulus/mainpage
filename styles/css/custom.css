@@ -4,8 +4,9 @@
   flex-direction: column;  
   flex-wrap:wrap; 
   justify-content: space-between; 
-  background-color:rgb(243, 242, 243);
   align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .photo-container {
@@ -23,4 +24,9 @@
 
 .video-section {
   margin: auto;
+}
+
+.video {
+  margin: auto;
+  border-radius: 2px;
 }
