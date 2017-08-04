@@ -1,8 +1,7 @@
 .photo-wrapper {
   border-radius: 5px; 
   display: flex; 
-  /* flex: 1;  */
-  flex-direction: row; 
+  flex-direction: column;  
   flex-wrap:wrap; 
   justify-content: space-between; 
   background-color:rgb(243, 242, 243);
@@ -20,4 +19,8 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.video-section {
+  margin: auto;
 }
