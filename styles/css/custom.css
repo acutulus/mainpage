@@ -1,0 +1,32 @@
+.photo-wrapper {
+  border-radius: 5px; 
+  display: flex; 
+  flex-direction: column;  
+  flex-wrap:wrap; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.photo-container {
+  border: 1px solid;
+  border-color:rgb(210, 221, 247);
+  border-radius:3px; 
+  margin: 20px;
+}
+
+.photo-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-section {
+  margin: auto;
+}
+
+.video {
+  margin: auto;
+  border-radius: 2px;
+}
